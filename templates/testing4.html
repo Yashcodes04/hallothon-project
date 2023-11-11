@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poisson Distribution Calculator</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"] {
+    padding: 10px;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+
+button:focus {
+    outline: none;
+}
+
+h2 {
+    margin-top: 20px;
+    color: #333;
+}
+
+p {
+    color: #555;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Poisson Distribution Calculator</h1>
+
+    <form method="post">
+        <label for="lambda_parameter">Enter Lambda Parameter (μ): </label>
+        <input type="number" step="0.01" name="lambda_parameter" required>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if lambda_parameter is not none %}
+    <h2>Results:</h2>
+    <p>Mean: {{ mean }}</p>
+    <p>Variance: {{ variance }}</p>
+
+    <h2>Probability Mass Function (PMF) Values:</h2>
+    <ul>
+        {% for pmf_value in pmf_values %}
+        <li>{{ pmf_value }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Cumulative Distribution Function (CDF) Values:</h2>
+    <ul>
+        {% for cdf_value in cdf_values %}
+        <li>{{ cdf_value }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Set Operations</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+    
+    h1 {
+        color: #333;
+    }
+    
+    form {
+        margin-top: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    select {
+        padding: 10px;
+        width: 300px;
+        margin-bottom: 10px;
+    }
+    
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    
+    input[type="submit"]:active {
+        background-color: #3e8e41;
+    }
+    
+    input[type="submit"]:focus {
+        outline: none;
+    }
+    
+    h2 {
+        margin-top: 20px;
+        color: #333;
+    }
+    
+    p {
+        color: #555;
+    }
+    </style>
+</head>
+<body>
+    <h1>Set Operations</h1>
+    <form method="POST">
+        Enter the first set (comma-separated elements): <input type="text" name="set1" value="{{ set1 }}" required><br>
+        Enter the second set (comma-separated elements): <input type="text" name="set2" value="{{ set2 }}" required><br>
+        <label for="choice">Choose a set operation:</label>
+        <select name="choice" id="choice">
+            <option value="1" {% if choice == '1' %}selected{% endif %}>Union</option>
+            <option value="2" {% if choice == '2' %}selected{% endif %}>Intersection</option>
+            <option value="3" {% if choice == '3' %}selected{% endif %}>Set Difference (Set1 - Set2)</option>
+            <option value="4" {% if choice == '4' %}selected{% endif %}>Set Difference (Set2 - Set1)</option>
+            <option value="5" {% if choice == '5' %}selected{% endif %}>Symmetric Difference</option>
+            <option value="6" {% if choice == '6' %}selected{% endif %}>Check if Set1 is a subset of Set2</option>
+            <option value="7" {% if choice == '7' %}selected{% endif %}>Check if Set2 is a subset of Set1</option>
+        </select>
+        <input type="submit" value="Perform Operation">
+    </form>
+
+    {% if result %}
+    <h2>Result:</h2>
+    <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat Interface</title>
+    <!-- Link the external CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/calculator.css') }}">
+    <script src="{{ url_for('static',filename='scripts/calculator.js') }}"></script>
+</head>
+    
+<body>
+    <div class="navbar">
+        <h2 class="logo">In.Sight</h1>
+            
+        <ul>
+          <li><a href="/abc">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+      </div>
+      <div class="sidebar">
+        <div class="sidebar-item"><a href="{{url_for('laplace_fuc')}}">Laplace<a></div>
+            <div class="sidebar-item"><a href="{{url_for('inv_lapla')}}">inverse laplace</a></div>
+        <div class="sidebar-item">
+            <a href="{{url_for('taylor')}}"> taylor </a>
+        </div>
+        <div class="sidebar-item">
+            <a href="{{url_for('poisson')}}"> possion's D</a>
+        </div>
+        <div class="sidebar-item">
+            <a href="{{url_for('bino')}}">calculate_binomial_expansion</a>
+        </div>
+        <div class="sidebar-item">
+            <a href="{{url_for('de')}}">solve_differential_equation</a>
+        </div>
+        <div class="sidebar-item">
+            <a href="{{url_for('set_operation')}}">set theory </a>
+        </div>
+        <div class="sidebar-item">binomial</div>
+        <div class="sidebar-item">analytic</div>
+        <div class="sidebar-item"></div>
+    </div>  
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box"></div>
+        <div class="input-bar">
+            <input type="text" id="user-input" placeholder="New day new problem...">
+            <input type="button" value="Send" onclick="sendMessage()">
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userMessage = document.getElementById("user-input").value;
+            if (userMessage.trim() === "") return;
+
+            var chatBox = document.getElementById("chat-box");
+            var userDiv = document.createElement("div");
+            userDiv.className = "user-message";
+            userDiv.textContent = "You: " + userMessage;
+            chatBox.appendChild(userDiv);
+
+            // You can send the userMessage to your server for processing here
+
+            // For demonstration purposes, let's simulate a response from ChatGPT
+            var botMessage = document.createElement("div");
+            botMessage.className = "bot-message";
+            botMessage.textContent = "output response.";
+            chatBox.appendChild(botMessage);
+
+            // Scroll to the bottom of the chat box to show the latest message
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Clear the user input field
+            document.getElementById("user-input").value = "";
+        }
+        
+    </script>
+</body>
+
+</html>

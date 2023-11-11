@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Taylor Series Approximation Calculator</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+    
+    h1 {
+        color: #333;
+    }
+    
+    form {
+        margin-top: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 300px;
+    }
+    
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    
+    input[type="submit"]:active {
+        background-color: #3e8e41;
+    }
+    
+    input[type="submit"]:focus {
+        outline: none;
+    }
+    
+    h2 {
+        margin-top: 20px;
+        color: #333;
+    }
+    
+    p {
+        color: #555;
+    }
+    </style>
+</head>
+<body>
+    <h1>Taylor Series Approximation Calculator</h1>
+    <form method="POST">
+        Enter the function in terms of 'x': <input type="text" name="function_input" required>
+        <input type="submit" value="Calculate Taylor Series Approximation">
+    </form>
+    <br>
+    {% if result %}
+    <h2>Taylor Series Approximation Result:</h2>
+    <p>{{ result }}</p>
+    {% endif %}
+    {% if error_message %}
+    <h2>Error:</h2>
+    <p>{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
